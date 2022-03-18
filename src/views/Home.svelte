@@ -27,7 +27,7 @@
   <h2 class="title">{title}</h2>
   <div class="container">
     {#each projects as project}
-      <div class="card" :key="project.id">
+      <div class="card" key={project.id}>
         <h3 class="project-name">{project.name}</h3>
         <img src={project.url} alt={project.name} class="img" />
         <div class="description">

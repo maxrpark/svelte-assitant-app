@@ -18,6 +18,7 @@
     type: null,
   };
 
+  // alert
   let timeOut;
   const alertMessege = (messege, type) => {
     clearTimeout(timeOut);
@@ -31,6 +32,7 @@
     }
   };
 
+  // form
   const handleSubmit = (e) => {
     e.preventDefault();
     if (task.trim() === '') {
@@ -55,6 +57,7 @@
     }
   };
 
+  // edit
   const editItem = (id) => {
     let item = todos.find((item) => item.id === id);
     task = item.value;
@@ -62,6 +65,8 @@
     isEditing = true;
     alertMessege('Editing...', 'warning');
   };
+
+  // complete
   const completeItem = (id) => {
     todos = todos.map((item) => {
       if (item.id === id) {
@@ -71,16 +76,20 @@
       return item;
     });
   };
+
+  // delete
   const deleteItem = (id) => {
     todos = todos.filter((task) => task.id !== id);
     alertMessege('Task Deleted!', 'danger');
   };
 
+  // clear
   const removeAll = () => {
     todos = [];
     alertMessege('No task left!', 'danger');
   };
 
+  // local storage
   const setLocalStorage = () => {
     localStorage.setItem('svelteTodos', JSON.stringify(todos));
   };
@@ -120,7 +129,7 @@
     <div class="todo-list">
       <ul class="todo-container">
         {#each todos as item}
-          <li key="item.id" class="item" class:isComplete={item.completed}>
+          <li key={item.id} class="item" class:isComplete={item.completed}>
             <p class="item-value">{item.value}</p>
             <div class="btns-container">
               <button on:click={() => editItem(item.id)} class="btn edit">
