@@ -44,7 +44,6 @@
       alertMessege('Task Added!', 'success');
       todos = todos;
     } else if (isEditing) {
-      alertMessege('Editing', 'warning');
       todos = todos.map((item) => {
         if (item.id === taskID) {
           item.value = task;
@@ -68,6 +67,8 @@
 
   // complete
   const completeItem = (id) => {
+    task = '';
+    isEditing = false;
     todos = todos.map((item) => {
       if (item.id === id) {
         item.completed = !item.completed;
@@ -79,12 +80,16 @@
 
   // delete
   const deleteItem = (id) => {
+    task = '';
+    isEditing = false;
     todos = todos.filter((task) => task.id !== id);
     alertMessege('Task Deleted!', 'danger');
   };
 
   // clear
   const removeAll = () => {
+    task = '';
+    isEditing = false;
     todos = [];
     alertMessege('No task left!', 'danger');
   };
