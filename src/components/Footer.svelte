@@ -4,7 +4,7 @@
 
 <footer>
   <p>
-    Made with Vue, by
+    Made with Svelte, by
     <a
       target="_blank"
       rel="noreferrer"
